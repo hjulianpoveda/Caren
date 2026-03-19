@@ -36,33 +36,48 @@
     <div class="container">
         <h2>Regístrate para participar</h2>
 
-        <form id="formulario" class="formulario" novalidate>
-
-             <select name="tipo" id="tipo">
-                <option value="">¿Cómo vas a participar?</option>
-                <option value="Cuidador">Soy cuidador</option>
-                <option value="Paciente/Familiar">Soy paciente o familiar</option>
+         <form id="formulario" class="formulario" novalidate>
+            <select name="especialidad" id="especialidad">
+                <option value="">¿Como deseas participar?</option>
+                <option value="Auxiliar de enfermería">Soy Auxiliar de enfermería</option>
+                <option value="Enfermería">Soy Enfermero/a</option>
+                <option value="Terapia Ocupacional">Soy Terapeuta ocupacional</option>
+                <option value="Fisioterapia">Soy Fisioterapeuta</option>
+                <option value="Terapia Física">Soy Terapeuta físico/a</option>
+                <option value="Terapia Respiratoria">Soy Terapeuta respiratorio/a</option>
+                <option value="Psicología">Soy Psicólogo/a</option>
+                <option value="Acompañamiento Niños">Soy Acompañante de niños</option>
+                <option value="Acompañamiento Mayores">Soy Acompañante de personas Mayores</option>
+                <option value="Otro">Me especializo en otro campo</option>
             </select>
             <small class="error"></small>
 
-            <input type="text" name="nombre" id="nombre" placeholder="Nombre completo">
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre y Apellido">
             <small class="error"></small>
 
-            <input type="email" name="email" id="email" placeholder="Correo electrónico">
+            <input type="tel" name="telefono" id="telefono" placeholder="Celular">
+            <small class="error"></small>            
+
+            <select name="departamento" id="departamento">
+                <option value="">Departamento de residencia</option>
+            </select>
             <small class="error"></small>
 
-            <input type="tel" name="telefono" id="telefono" placeholder="Teléfono">
-            <small class="error"></small>
-
-            <input type="text" name="ciudad" id="ciudad" placeholder="Ciudad">
+             <select name="ciudad" id="ciudad" disabled>
+                <option value="">Municipio de residencia</option>
+            </select>
             <small class="error"></small>
 
             <!--<input type="text" name="empresa" style="display:none"> -->
 
             <button type="submit" class="btn-primary">
-                <span class="btn-text">¡Empecemos!</span>
+                <span class="btn-text">¡Comencemos!</span>
                 <span class="loader" style="display:none;"></span>
             </button>
+
+        </form>
+
+            
 
         </form>
     </div>
