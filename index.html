@@ -163,6 +163,40 @@ form.addEventListener("submit", async function(e) {
 
     toggleLoading(false);
 });*/
+
+     let dataGlobal = [];
+
+    fetch("json/colombia.json")
+      .then(res => res.json())
+      .then(data => {
+        dataGlobal = data;
+
+        const departamentos = [...new Set(data.map(d => d.departamento))];
+
+        const depSelect = document.getElementById("departamentos");
+
+        departamentos.forEach(dep => {
+          const option = document.createElement("option");
+          option.value = dep;
+          option.textContent = dep;
+          depSelect.appendChild(option);
+        });
+      });
+
+    document.getElementById("departamento").addEventListener("change", function () {
+      const municipioSelect = document.getElementById("ciudad");
+      municipioSelect.innerHTML = '<option value="">Municipio de residencia</option>';
+
+      const filtrados = dataGlobal.filter(d => d.departamento === this.value);
+
+      filtrados.forEach(m => {
+        const option = document.createElement("option");
+        option.value = m.municipio;
+        option.textContent = m.municipio;
+        municipioSelect.appendChild(option);
+      });
+    });
+
     const form = document.getElementById("formulario");
     form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -213,7 +247,7 @@ form.addEventListener("submit", async function(e) {
 
     toggleLoading(true);
 
-    fetch("https://script.google.com/macros/s/AKfycbyvO-gCcwk3CIMs621VkU8YA5JiNE3B9fVnpiRZV_LIHAPImO-s_BJhx56W4VhtUhkp/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbw54YYIT_B4D0V0-RM8-_AqfN8GciXlF_hmLXQGxmzpXBJJ36Ahl1pvc-tYlTK2-rnc/exec", {
         method: "POST",
         body: new URLSearchParams({
             nombre: nombre,
