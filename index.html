@@ -68,6 +68,19 @@
             </select>
             <small class="error"></small>
 
+            <div style="margin-top: 10px;">
+            <input type="checkbox" id="aceptaDatos" required>
+            <label for="aceptaDatos">
+                Acepto el tratamiento de mis datos personales según la 
+                <span id="verPolitica" style="color: blue; cursor: pointer; text-decoration: underline;">
+                política de privacidad
+                </span>
+            </label>
+            <small class="error"></small>
+            </div>
+
+            
+
             <!--<input type="text" name="empresa" style="display:none"> -->
 
             <button type="submit" class="btn-primary">
@@ -86,6 +99,26 @@
 <footer>
     <p>© 2026 ProCare. Todos los derechos reservados.</p>
 </footer>
+
+<div id="modalPolitica" class="modal">
+  <div class="modal-content">
+    <span class="cerrar">&times;</span>
+    
+    <h2>Política de Privacidad</h2>
+
+    <div class="contenido-scroll">
+      <p>
+        Aquí va toda tu política de tratamiento de datos personales...
+      </p>
+      <p>
+        Puedes pegar aquí el texto completo (Ley 1581 de 2012, finalidades, derechos, etc.)
+      </p>
+      <p>
+        Este contenedor tiene scroll para textos largos.
+      </p>
+    </div>
+  </div>
+</div>
 
 <script>
 /*const form = document.getElementById("formulario");
@@ -172,9 +205,7 @@ form.addEventListener("submit", async function(e) {
         dataGlobal = data;
 
         const departamentos = [...new Set(data.map(d => d.departamento))];
-
         const depSelect = document.getElementById("departamento");
-
         departamentos.forEach(dep => {
           const option = document.createElement("option");
           option.value = dep;
@@ -187,19 +218,20 @@ form.addEventListener("submit", async function(e) {
       const municipioSelect = document.getElementById("ciudad");
       municipioSelect.innerHTML = '<option value="">Municipio de residencia</option>';
       municipioSelect.disabled = false;
-      const filtrados = dataGlobal.filter(d => d.departamento === this.value);
-
-      filtrados.forEach(m => {
+      const dep = dataGlobal.find(d => d.departamento === this.value);
+        dep.ciudades.forEach(ciudad => {
         const option = document.createElement("option");
-        option.value = m.municipio;
-        option.textContent = m.municipio;
+        option.value = ciudad;
+        option.textContent = ciudad;
         municipioSelect.appendChild(option);
-      });
+        });
     });
+
 
     const form = document.getElementById("formulario");
     form.addEventListener("submit", function(e) {
     e.preventDefault();
+    clearErrors()
 
     const nombre = document.getElementById("nombre").value.trim();
     //const email = document.getElementById("email").value.trim();
@@ -260,7 +292,9 @@ form.addEventListener("submit", async function(e) {
         })
     })
     .then(response => response.text())
+        
     .then(data => {
+        alert("Gracias por registrarte. Te contactaremos pronto.");         
         if (data === "success") {
             alert("Registro exitoso");
             document.getElementById("formulario").reset();
@@ -270,6 +304,8 @@ form.addEventListener("submit", async function(e) {
     })
     .catch(error => {
         //alert("Error de conexión. Intenta nuevamente.");
+        form.reset();
+        alert("Gracias por registrarte. Te contactaremos pronto.");
     });
 });
 
@@ -297,6 +333,25 @@ function toggleLoading(state) {
     text.style.display = state ? "none" : "inline";
     loader.style.display = state ? "inline-block" : "none";
 }
+
+const modal = document.getElementById("modalPolitica");
+const btn = document.getElementById("verPolitica");
+const cerrar = document.querySelector(".cerrar");
+
+btn.onclick = () => {
+  modal.style.display = "block";
+};
+
+cerrar.onclick = () => {
+  modal.style.display = "none";
+};
+
+window.onclick = (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+};
+
 </script>
 
 </body>
