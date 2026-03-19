@@ -32,30 +32,29 @@
 
 <section id="registro" class="registro">
     <div class="container">
-        <h2>Regístrate para recibir información</h2>
+        <h2>Regístrate para participar</h2>
 
         <form id="formulario" class="formulario" novalidate>
+            <select name="especialidad" id="especialidad">
+                <option value="">¿Como deseas participar?</option>
+                <option value="Auxiliar de enfermería">Soy Auxiliar de enfermería</option>
+                <option value="Enfermería">Soy Enfermero/a</option>
+                <option value="Terapia Ocupacional">Soy Terapeuta ocupacional</option>
+                <option value="Fisioterapia">Soy Fisioterapeuta</option>
+                <option value="Terapia Física">Soy Terapeuta físico/a</option>
+                <option value="Terapia Respiratoria">Soy Terapeuta respiratorio/a</option>
+                <option value="Psicología">Soy Psicólogo/a</option>
+                <option value="Acompañamiento Niños">Soy Acompañante de niños</option>
+                <option value="Acompañamiento Mayores">Soy Acompañante de personas Mayores</option>
+                <option value="Otro">Me especializo en otro campo</option>
+            </select>
+            <small class="error"></small>
 
             <input type="text" name="nombre" id="nombre" placeholder="Nombre y Apellido">
             <small class="error"></small>
 
             <input type="tel" name="telefono" id="telefono" placeholder="Celular">
-            <small class="error"></small>
-
-            <select name="especialidad" id="especialidad">
-                <option value="">¿En que campo te especializas?</option>
-                <option value="Auxiliar de enfermería">Soy Auxiliar de enfermería</option>
-                <option value="Enfermería">Soy enfermero/a</option>
-                <option value="Terapia Ocupacional">Soy terapeuta ocupacional</option>
-                <option value="Fisioterapia">Soy fisioterapeuta</option>
-                <option value="Terapia Física">Soy terapeuta físico/a</option>
-                <option value="Terapia Respiratoria">Soy terapeuta respiratorio/a</option>
-                <option value="Psicología">Soy psicólogo/a</option>
-                <option value="Acompañamiento Niños">Soy acompañante de niños</option>
-                <option value="Acompañamiento Mayores">Soy acompañante de personas Mayores</option>
-                <option value="Otro">Me especializo en otro campo</option>
-            </select>
-            <small class="error"></small>
+            <small class="error"></small>            
 
             <select name="departamento" id="departamento">
                 <option value="">Departamento de residencia</option>
