@@ -173,7 +173,7 @@ form.addEventListener("submit", async function(e) {
 
         const departamentos = [...new Set(data.map(d => d.departamento))];
 
-        const depSelect = document.getElementById("departamentos");
+        const depSelect = document.getElementById("departamento");
 
         departamentos.forEach(dep => {
           const option = document.createElement("option");
